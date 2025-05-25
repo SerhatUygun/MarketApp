@@ -1,0 +1,62 @@
+﻿@model List<MarketApp.VarlikKatmani.Models.Urun>
+@{
+    ViewBag.Title = "Yeni Satış";
+    Layout = "~/Areas/Yonetim/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h2 class="mb-0">Yeni Satış</h2>
+            </div>
+            <div class="card-body">
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        @TempData["SuccessMessage"]
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                }
+                @if (Model == null || !Model.Any())
+                {
+                    <p class="alert alert-warning">Satış için ürün bulunamadı.</p>
+                }
+                else
+                {
+                    <table class="table table-hover table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Ürün</th>
+                                <th>Marka</th>
+                                <th>Kategori</th>
+                                <th>Fiyat</th>
+                                <th>Stok</th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Ad</td>
+                                    <td>@item.Marka.Ad</td>
+                                    <td>@item.Kategori.Ad</td>
+                                    <td>@item.Fiyat.ToString("C")</td>
+                                    <td>@item.StokAdet</td>
+                                    <td>
+                                        <a href="@Url.Action("SepeteEkle", "Satis", new { id = item.Id, area = "Yonetim" })" class="btn btn-primary btn-sm">Sepete Ekle</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                <div class="text-center">
+                    <a href="@Url.Action("SepetGoruntule", "Satis", new { area = "Yonetim" })" class="btn btn-info">Sepeti Görüntüle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

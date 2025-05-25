@@ -1,0 +1,41 @@
+﻿@model List<MarketApp.VarlikKatmani.Models.Urun>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h2 class="mb-0">MarketApp Yönetim Paneli</h2>
+                </div>
+                <div class="card-body">
+                    <h4>Neler Yaptık?</h4>
+                    <p>MarketApp'in güçlü yönetim paneli ile işletmenizi kolayca yönetebilirsiniz. Yönetim alanında gerçekleştirdiğimiz başlıca işlemler:</p>
+                    <ul>
+                        <li><strong>Kullanıcı Yönetimi:</strong> Kullanıcı ekleme, düzenleme, silme ve yetkilendirme işlemleri.</li>
+                        <li><strong>Marka ve Kategori Yönetimi:</strong> Ürünlerinizi organize etmek için marka ve kategori oluşturma, güncelleme, silme.</li>
+                        <li><strong>Ürün Yönetimi:</strong> Ürün ekleme, stok ve fiyat güncelleme, resim yükleme ve silme.</li>
+                        <li><strong>Satış Yönetimi:</strong> Satış kaydı oluşturma, detaylı satış raporları, sepet yönetimi.</li>
+                    </ul>
+                    <h4>Neler Yapabilirsiniz?</h4>
+                    <p>MarketApp ile işletmenizi büyütmek için sınırsız olanaklar sunuyoruz:</p>
+                    <ul>
+                        <li>Kullanıcı dostu arayüzle hızlı ve kolay alışveriş deneyimi.</li>
+                        <li>Detaylı satış raporları ve analizlerle iş süreçlerinizi optimize etme.</li>
+                        <li>Sepet yönetimi ile müşterilerinizin alışverişini kolaylaştırma.</li>
+                        <li>Esnek filtreleme ve ürün yönetimi ile geniş ürün yelpazesi sunma.</li>
+                    </ul>
+                    <div class="text-center">
+                        <a href="@Url.Action("Login", "Kullanici", new { area = "Yonetim" })" class="btn btn-primary btn-lg">Yönetim Paneline Git</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>

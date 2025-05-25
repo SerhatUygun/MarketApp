@@ -1,0 +1,36 @@
+﻿@model MarketApp.VarlikKatmani.Models.Kullanici
+@{
+    ViewBag.Title = "Kullanıcı Sil";
+    Layout = "~/Areas/Yonetim/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card shadow-sm">
+            <div class="card-header bg-danger text-white">
+                <h2 class="mb-0">Kullanıcı Sil</h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">Aşağıdaki kullanıcıyı silmek istediğinizden emin misiniz?</p>
+                <dl class="row">
+                    <dt class="col-md-4">E-posta:</dt>
+                    <dd class="col-md-8">@Model.EPosta</dd>
+                    <dt class="col-md-4">Ad Soyad:</dt>
+                    <dd class="col-md-8">@Model.Ad @Model.Soyad</dd>
+                    <dt class="col-md-4">Yetki:</dt>
+                    <dd class="col-md-8">@Model.Yetki</dd>
+                </dl>
+                @using (Html.BeginForm("SilConfirmed", "Kullanici", new { eposta = Model.EPosta, area = "Yonetim" }, FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.EPosta)
+                    <div class="form-group row">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-danger">Sil</button>
+                            <a href="@Url.Action("Listele", "Kullanici", new { area = "Yonetim" })" class="btn btn-secondary">İptal</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

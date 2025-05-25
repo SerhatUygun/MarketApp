@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Yönetim Paneli";
+    Layout = "~/Areas/Yonetim/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2><i class="fas fa-tachometer-alt"></i> Yönetim Paneli</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header"><i class="fas fa-users"></i> Kullanıcılar</div>
+                <div class="card-body">
+                    <p>Kullanıcıları yönetin.</p>
+                    <a href="@Url.Action("Listele", "Kullanici", new { area = "Yonetim" })" class="btn btn-light"><i class="fas fa-arrow-right"></i> Git</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header"><i class="fas fa-box"></i> Ürünler</div>
+                <div class="card-body">
+                    <p>Ürünleri ve kategorileri yönetin.</p>
+                    <a href="@Url.Action("Listele", "Urun", new { area = "Yonetim" })" class="btn btn-light"><i class="fas fa-arrow-right"></i> Git</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-header"><i class="fas fa-shopping-cart"></i> Satışlar</div>
+                <div class="card-body">
+                    <p>Satışları ve sepeti yönetin.</p>
+                    <a href="@Url.Action("Listele", "Satis", new { area = "Yonetim" })" class="btn btn-light"><i class="fas fa-arrow-right"></i> Git</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

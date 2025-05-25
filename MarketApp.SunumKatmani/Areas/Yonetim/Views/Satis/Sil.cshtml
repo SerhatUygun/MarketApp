@@ -1,0 +1,36 @@
+﻿@model MarketApp.VarlikKatmani.Models.Satis
+@{
+    ViewBag.Title = "Satış Sil";
+    Layout = "~/Areas/Yonetim/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card shadow-sm">
+            <div class="card-header bg-danger text-white">
+                <h2 class="mb-0">Satış Sil</h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">Aşağıdaki satışı silmek istediğinizden emin misiniz?</p>
+                <dl class="row">
+                    <dt class="col-md-4">ID:</dt>
+                    <dd class="col-md-8">#@Model.Id</dd>
+                    <dt class="col-md-4">Tarih:</dt>
+                    <dd class="col-md-8">@Model.TarihSaat.ToString("dd.MM.yyyy HH:mm")</dd>
+                    <dt class="col-md-4">Toplam Tutar:</dt>
+                    <dd class="col-md-8">@Model.ToplamTutar.ToString("C")</dd>
+                </dl>
+                @using (Html.BeginForm("SilConfirmed", "Satis", new { id = Model.Id, area = "Yonetim" }, FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.Id)
+                    <div class="form-group row">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-danger">Sil</button>
+                            <a href="@Url.Action("Listele", "Satis", new { area = "Yonetim" })" class="btn btn-secondary">İptal</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

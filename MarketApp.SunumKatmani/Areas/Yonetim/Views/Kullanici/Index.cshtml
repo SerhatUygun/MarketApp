@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Kullanıcı Yönetimi";
+    Layout = "~/Areas/Yonetim/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow-sm">
+            <div class="card-header bg-info text-white">
+                <h2 class="mb-0">Kullanıcı Yönetimi</h2>
+            </div>
+            <div class="card-body">
+                <p>Kullanıcıları yönetmek için aşağıdaki bağlantıyı kullanın.</p>
+                <a href="@Url.Action("Listele", "Kullanici", new { area = "Yonetim" })" class="btn btn-primary">Kullanıcıları Listele</a>
+            </div>
+        </div>
+    </div>
+</div>

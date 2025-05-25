@@ -1,0 +1,41 @@
+﻿@model MarketApp.VarlikKatmani.Models.Urun
+
+@{
+    ViewBag.Title = "Ürün Sil";
+    Layout = "~/Areas/Yonetim/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card shadow-sm">
+            <div class="card-header bg-danger text-white">
+                <h2 class="mb-0">Ürün Sil</h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">Aşağıdaki ürünü silmek istediğinizden emin misiniz?</p>
+                <dl class="row">
+                    <dt class="col-md-4">Ad:</dt>
+                    <dd class="col-md-8">@Model.Ad</dd>
+                    <dt class="col-md-4">Marka:</dt>
+                    <dd class="col-md-8">@(Model.Marka?.Ad ?? "Bilinmiyor")</dd>
+                    <dt class="col-md-4">Kategori:</dt>
+                    <dd class="col-md-8">@(Model.Kategori?.Ad ?? "Bilinmiyor")</dd>
+                    <dt class="col-md-4">Stok Adet:</dt>
+                    <dd class="col-md-8">@Model.StokAdet</dd>
+                    <dt class="col-md-4">Fiyat:</dt>
+                    <dd class="col-md-8">@Model.Fiyat.ToString("C")</dd>
+                </dl>
+                @using (Html.BeginForm("SilConfirmed", "Urun", new { id = Model.Id, area = "Yonetim" }, FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.Id)
+                    <div class="form-group row">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-danger">Sil</button>
+                            <a href="@Url.Action("Listele", "Urun", new { area = "Yonetim" })" class="btn btn-secondary">İptal</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

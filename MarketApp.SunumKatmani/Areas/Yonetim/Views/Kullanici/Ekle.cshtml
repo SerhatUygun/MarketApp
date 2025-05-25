@@ -1,0 +1,70 @@
+﻿@model MarketApp.VarlikKatmani.Models.Kullanici
+@{
+    ViewBag.Title = "Kullanıcı Ekle";
+    Layout = "~/Areas/Yonetim/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h2 class="mb-0">Kullanıcı Ekle</h2>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Ekle", "Kullanici", new { area = "Yonetim" }, FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group row">
+                        @Html.LabelFor(x => x.EPosta, new { @class = "col-md-3 col-form-label" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(x => x.EPosta, new { @class = "form-control", @required = "required" })
+                            @Html.ValidationMessageFor(x => x.EPosta, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(x => x.Parola, new { @class = "col-md-3 col-form-label" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(x => x.Parola, new { @class = "form-control", @type = "password", @required = "required" })
+                            @Html.ValidationMessageFor(x => x.Parola, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(x => x.Ad, new { @class = "col-md-3 col-form-label" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(x => x.Ad, new { @class = "form-control", @required = "required" })
+                            @Html.ValidationMessageFor(x => x.Ad, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(x => x.Soyad, new { @class = "col-md-3 col-form-label" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control", @required = "required" })
+                            @Html.ValidationMessageFor(x => x.Soyad, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(x => x.Yetki, new { @class = "col-md-3 col-form-label" })
+                        <div class="col-md-9">
+                            @Html.EnumDropDownListFor(x => x.Yetki, "Seçiniz", new { @class = "form-control", @required = "required" })
+                            @Html.ValidationMessageFor(x => x.Yetki, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-9 offset-md-3">
+                            <a href="@Url.Action("Listele", "Kullanici", new { area = "Yonetim" })" class="btn btn-secondary">İptal</a>
+                            <button type="submit" class="btn btn-success">Kaydet</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("form").validate();
+        });
+    </script>
+}
